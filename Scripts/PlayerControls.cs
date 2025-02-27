@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
 
-    [SerializeField] float torqueAmount = 1f;
+    [SerializeField] float torqueAmount = 1f; //Serialized field e variáveis public tem a similaridade de que podem ser acessadas pelo painel da Unity, 
+                                              // porém as variáves public podem ser alteradas acidentalmente posteriormente através de códigos
+                                              //enquanto os parametros Serialized field não podem.
     [SerializeField] float boostSpeed = 50f;
     [SerializeField] float baseSpeed = 20f;
     Rigidbody2D rb2d;
     SurfaceEffector2D surfaceEffector2D;
+    bool canMove = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,8 +23,16 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-        RotatePlayer();
-        RespondToBoost();
+        if (canMove)
+        {
+            RotatePlayer();
+            RespondToBoost();
+        }
+    }
+
+    public void DisableControls() //Public pode ser utilizado caso seja necessário acessar este procedimento atravéz de outro script
+    {
+        canMove = false;
     }
 
     void RespondToBoost()
