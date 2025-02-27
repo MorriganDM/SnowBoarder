@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
+    [SerializeField] float ReloadDelay = 1f;
+
     void OnTriggerEnter2D(Collider2D other) //procedimento para gatilho em colisão
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene(0);
+           Invoke("ReloadScene", ReloadDelay)
         }    
     }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
