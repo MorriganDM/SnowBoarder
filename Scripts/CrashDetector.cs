@@ -7,13 +7,15 @@ public class CrashDetector : MonoBehaviour
 {
     [SerializeField] float RespawnDelay = 0.5f;
     [SerializeField] ParticleSystem deathEffect;
+    [SerializeField] AudioClip deathSFX;
 
     void OnTriggerEnter2D(Collider2D other) //procedimento para gatilho em colisão
     {
         if (other.tag == "Snow")
         {
-            Invoke("Respawn", RespawnDelay);
             deathEffect.Play();
+            GetComponent<AudioSource>().PlayOneShot(deathSFX);
+            Invoke("Respawn", RespawnDelay);
         }    
     }
 

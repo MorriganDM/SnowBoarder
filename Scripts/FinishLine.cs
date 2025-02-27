@@ -9,12 +9,15 @@ public class FinishLine : MonoBehaviour
     [SerializeField] ParticleSystem finishEffect;
 
 
-    void OnTriggerEnter2D(Collider2D other) //procedimento para gatilho em colisão
+    void OnTriggerEnter2D(Collider2D other) //procedimento para gatilho em colisão quando duas hitboxes estão no mesmo espaço.
     {
         if (other.tag == "Player")
         {
-           Invoke("ReloadScene", ReloadDelay);
+           
            finishEffect.Play();
+           GetComponent<AudioSource>().Play();
+           Invoke("ReloadScene", ReloadDelay);
+
         }    
     }
 
