@@ -6,16 +6,40 @@ public class PlayerControls : MonoBehaviour
 {
 
     [SerializeField] float torqueAmount = 1f;
+    [SerializeField] float boostSpeed = 50f;
+    [SerializeField] float baseSpeed = 20f;
     Rigidbody2D rb2d;
+    SurfaceEffector2D surfaceEffector2D;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>(); //GetComponent é para componentes do objeto no qual se encontra o script.
+        surfaceEffector2D = FindFirstObjectByType<SurfaceEffector2D>(); //FindFirstObjectByType encontrará o primeiro objeto de determinado tipo.
+    }                                                                                           
+
+    void Update()
+    {
+        RotatePlayer();
+        RespondToBoost();
     }
 
-    // Update is called once per frame
-    void Update()
+   
+
+    void RespondToBoost()
+    {
+       if(Input.GetKey(KeyCode.UpArrow))
+        {
+            surfaceEffector2D.speed = boostSpeed;
+        }
+        else if (!Input.GetKey(KeyCode.UpArrow)) //Alternativas para esta linha: else
+        {
+            surfaceEffector2D.speed = baseSpeed;
+        }
+
+    }
+
+    void RotatePlayer()
     {
         if(Input.GetKey(KeyCode.LeftArrow))
         {
