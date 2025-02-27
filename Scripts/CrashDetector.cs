@@ -9,7 +9,7 @@ public class CrashDetector : MonoBehaviour
     {
         if (other.tag == "Snow")
         {
-            Debug.Log("You've Died");
+            SceneManager.LoadScene(0);
         }    
     }
 }
