@@ -11,7 +11,7 @@ public class FinishLine : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-           Invoke("ReloadScene", ReloadDelay)
+           Invoke("ReloadScene", ReloadDelay);
         }    
     }
 

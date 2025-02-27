@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class CrashDetector : MonoBehaviour
 {
-    [SerializeField] float RespawnDelay = 0.5f
+    [SerializeField] float RespawnDelay = 0.5f;
 
     void OnTriggerEnter2D(Collider2D other) //procedimento para gatilho em colisão
     {
         if (other.tag == "Snow")
         {
-            Invoke("Respawn", RespawnDelay)
+            Invoke("Respawn", RespawnDelay);
         }    
     }
 
