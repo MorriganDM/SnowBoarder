@@ -24,8 +24,6 @@ public class PlayerControls : MonoBehaviour
         RespondToBoost();
     }
 
-   
-
     void RespondToBoost()
     {
        if(Input.GetKey(KeyCode.UpArrow))
